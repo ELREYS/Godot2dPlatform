@@ -7,8 +7,13 @@ var can_double_jump = true
 
 var velocity = Vector2(0,0)
 
+signal death
+signal checkPoint(position)
+
 func request_ready():
 	pass
+
+
 
 func get_input(delta):
 	velocity.x = 0
@@ -61,3 +66,14 @@ func _physics_process(delta):
 	#var snap = Vector2.DOWN * 16
 	#velocity = move_and_slide_with_snap(velocity,snap, Vector2.UP) 
 	#velocity.x = lerp(velocity.x,0,0.2)
+
+
+func _on_Fallzone_body_entered(body: Node) -> void:
+	print("Emit Signal Death")
+	emit_signal("death")
+
+
+
+func _on_Checkpoint_body_entered(body: Node) -> void:
+	if body.name == "Player":
+		emit_signal("checkPoint",position)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://start-assets/2D Platformer Assets/Graphics/Actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://WorldTiles/tileYellow_10.png" type="Texture" id=2]
@@ -25,6 +25,8 @@
 [ext_resource path="res://start-assets/2D Platformer Assets/Graphics/Level Art/Background/back.png" type="Texture" id=23]
 [ext_resource path="res://BG.gd" type="Script" id=24]
 [ext_resource path="res://start-assets/2D Platformer Assets/Graphics/Level Art/Background/middle.png" type="Texture" id=25]
+[ext_resource path="res://start-assets/2D Platformer Assets/Graphics/Level Mechanics/Checkpoint Off.png" type="Texture" id=26]
+[ext_resource path="res://start-assets/2D Platformer Assets/Graphics/Level Mechanics/Checkpoint On.png" type="Texture" id=27]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -523,13 +525,19 @@ extents = Vector2( 64, 32 )
 [sub_resource type="RectangleShape2D" id=23]
 extents = Vector2( 384, 32 )
 
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 3296, 10 )
+
+[sub_resource type="RectangleShape2D" id=25]
+extents = Vector2( 16, 24 )
+
 [node name="Level1" type="Node2D"]
 script = ExtResource( 24 )
 
 [node name="Tiles Solid" type="TileMap" parent="."]
 tile_set = SubResource( 19 )
 format = 1
-tile_data = PoolIntArray( 65535, 0, 0, 131071, 0, 0, 65578, 10, 0, 65579, 3, 0, 65580, 3, 0, 65581, 3, 0, 65582, 11, 0, 65593, 10, 0, 65594, 11, 0, 196607, 0, 0, 262143, 0, 0, 196656, 10, 0, 196657, 3, 0, 196658, 3, 0, 196659, 3, 0, 196660, 3, 0, 196661, 11, 0, 327679, 0, 0, 393215, 0, 0, 458751, 0, 0, 393239, 19, 0, 393240, 18, 0, 393241, 18, 0, 393242, 18, 0, 393243, 20, 0, 524287, 0, 0, 458752, 1, 0, 458753, 3, 0, 458754, 3, 0, 458755, 3, 0, 458756, 3, 0, 458757, 3, 0, 458758, 3, 0, 458759, 3, 0, 458760, 3, 0, 458761, 3, 0, 458762, 3, 0, 458763, 3, 0, 458764, 3, 0, 458765, 3, 0, 458766, 18, 0, 458767, 18, 0, 458768, 18, 0, 458769, 18, 0, 458770, 18, 0, 458771, 18, 0, 458772, 18, 0, 458773, 18, 0, 458774, 18, 0, 458775, 18, 0, 458776, 18, 0, 458777, 18, 0, 458778, 18, 0, 458779, 18, 0, 458780, 18, 0, 458781, 3, 0, 458782, 3, 0, 458783, 3, 0, 458784, 3, 0, 458785, 3, 0, 458786, 3, 0, 458787, 3, 0, 458788, 3, 0, 458789, 3, 0, 458790, 3, 0, 458791, 4, 0, 458812, 1, 0, 458813, 3, 0, 458814, 3, 0, 458815, 3, 0, 458816, 3, 0, 458817, 3, 0, 458818, 3, 0, 458819, 3, 0, 458820, 3, 0, 458821, 3, 0, 458822, 3, 0, 458823, 3, 0, 458824, 3, 0, 458825, 3, 0, 458826, 3, 0, 458827, 3, 0, 458828, 3, 0, 458829, 3, 0, 458830, 3, 0, 458831, 3, 0, 458832, 3, 0, 458833, 3, 0, 458834, 3, 0, 458835, 3, 0, 458836, 4, 0, 589823, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 0, 0, 524311, 0, 0, 524312, 0, 0, 524313, 0, 0, 524314, 0, 0, 524315, 0, 0, 524316, 0, 0, 524317, 0, 0, 524318, 0, 0, 524319, 0, 0, 524320, 0, 0, 524321, 0, 0, 524322, 0, 0, 524323, 0, 0, 524324, 0, 0, 524325, 0, 0, 524326, 0, 0, 524327, 0, 0, 524348, 0, 0, 524349, 0, 0, 524350, 0, 0, 524351, 0, 0, 524352, 0, 0, 524353, 0, 0, 524354, 0, 0, 524355, 0, 0, 524356, 0, 0, 524357, 0, 0, 524358, 0, 0, 524359, 0, 0, 524360, 0, 0, 524361, 0, 0, 524362, 0, 0, 524363, 0, 0, 524364, 0, 0, 524365, 0, 0, 524366, 0, 0, 524367, 0, 0, 524368, 0, 0, 524369, 0, 0, 524370, 0, 0, 524371, 0, 0, 524372, 0, 0, 655359, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589850, 0, 0, 589851, 0, 0, 589852, 0, 0, 589853, 0, 0, 589854, 0, 0, 589855, 0, 0, 589856, 0, 0, 589857, 0, 0, 589858, 0, 0, 589859, 0, 0, 589860, 0, 0, 589861, 0, 0, 589862, 0, 0, 589863, 0, 0, 589884, 0, 0, 589885, 0, 0, 589886, 0, 0, 589887, 0, 0, 589888, 0, 0, 589889, 0, 0, 589890, 0, 0, 589891, 0, 0, 589892, 0, 0, 589893, 0, 0, 589894, 0, 0, 589895, 0, 0, 589896, 0, 0, 589897, 0, 0, 589898, 0, 0, 589899, 0, 0, 589900, 0, 0, 589901, 0, 0, 589902, 0, 0, 589903, 0, 0, 589904, 0, 0, 589905, 0, 0, 589906, 0, 0, 589907, 0, 0, 589908, 0, 0 )
+tile_data = PoolIntArray( 65535, 0, 0, 131071, 0, 0, 65578, 10, 0, 65579, 3, 0, 65580, 3, 0, 65581, 3, 0, 65582, 11, 0, 65593, 10, 0, 65594, 11, 0, 196607, 0, 0, 262143, 0, 0, 196656, 10, 0, 196657, 3, 0, 196658, 3, 0, 196659, 3, 0, 196660, 3, 0, 196661, 11, 0, 327679, 0, 0, 393215, 0, 0, 458751, 0, 0, 524287, 0, 0, 458752, 1, 0, 458753, 3, 0, 458754, 3, 0, 458755, 3, 0, 458756, 3, 0, 458757, 3, 0, 458758, 3, 0, 458759, 3, 0, 458760, 3, 0, 458761, 4, 0, 458763, 1, 0, 458764, 3, 0, 458765, 3, 0, 458766, 18, 0, 458767, 18, 0, 458768, 18, 0, 458769, 18, 0, 458770, 18, 0, 458771, 18, 0, 458772, 18, 0, 458773, 18, 0, 458774, 4, 0, 458777, 1, 0, 458778, 18, 0, 458779, 18, 0, 458780, 18, 0, 458781, 3, 0, 458782, 3, 0, 458783, 3, 0, 458784, 3, 0, 458785, 3, 0, 458786, 3, 0, 458787, 3, 0, 458788, 3, 0, 458789, 3, 0, 458790, 3, 0, 458791, 4, 0, 458812, 1, 0, 458813, 3, 0, 458814, 3, 0, 458815, 3, 0, 458816, 3, 0, 458817, 3, 0, 458818, 3, 0, 458819, 3, 0, 458820, 3, 0, 458821, 3, 0, 458822, 3, 0, 458823, 3, 0, 458824, 3, 0, 458825, 3, 0, 458826, 3, 0, 458827, 3, 0, 458828, 3, 0, 458829, 3, 0, 458830, 3, 0, 458831, 3, 0, 458832, 3, 0, 458833, 3, 0, 458834, 3, 0, 458835, 3, 0, 458836, 4, 0, 589823, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 0, 0, 524313, 0, 0, 524314, 0, 0, 524315, 0, 0, 524316, 0, 0, 524317, 0, 0, 524318, 0, 0, 524319, 0, 0, 524320, 0, 0, 524321, 0, 0, 524322, 0, 0, 524323, 0, 0, 524324, 0, 0, 524325, 0, 0, 524326, 0, 0, 524327, 0, 0, 524348, 0, 0, 524349, 0, 0, 524350, 0, 0, 524351, 0, 0, 524352, 0, 0, 524353, 0, 0, 524354, 0, 0, 524355, 0, 0, 524356, 0, 0, 524357, 0, 0, 524358, 0, 0, 524359, 0, 0, 524360, 0, 0, 524361, 0, 0, 524362, 0, 0, 524363, 0, 0, 524364, 0, 0, 524365, 0, 0, 524366, 0, 0, 524367, 0, 0, 524368, 0, 0, 524369, 0, 0, 524370, 0, 0, 524371, 0, 0, 524372, 0, 0, 655359, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 0, 0, 589849, 0, 0, 589850, 0, 0, 589851, 0, 0, 589852, 0, 0, 589853, 0, 0, 589854, 0, 0, 589855, 0, 0, 589856, 0, 0, 589857, 0, 0, 589858, 0, 0, 589859, 0, 0, 589860, 0, 0, 589861, 0, 0, 589862, 0, 0, 589863, 0, 0, 589884, 0, 0, 589885, 0, 0, 589886, 0, 0, 589887, 0, 0, 589888, 0, 0, 589889, 0, 0, 589890, 0, 0, 589891, 0, 0, 589892, 0, 0, 589893, 0, 0, 589894, 0, 0, 589895, 0, 0, 589896, 0, 0, 589897, 0, 0, 589898, 0, 0, 589899, 0, 0, 589900, 0, 0, 589901, 0, 0, 589902, 0, 0, 589903, 0, 0, 589904, 0, 0, 589905, 0, 0, 589906, 0, 0, 589907, 0, 0, 589908, 0, 0 )
 
 [node name="Tile Triger" type="TileMap" parent="."]
 tile_set = ExtResource( 22 )
@@ -575,9 +583,9 @@ script = ExtResource( 21 )
 [node name="Camera2D2" type="Camera2D" parent="Player"]
 scale = Vector2( 0.5, 0.5 )
 current = true
-zoom = Vector2( 0.75, 0.75 )
+zoom = Vector2( 0.8, 0.8 )
 limit_left = 1
-limit_bottom = 600
+limit_bottom = 550
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 editor_draw_limits = true
@@ -588,12 +596,13 @@ scroll_offset = Vector2( 1, 1 )
 [node name="Purple Sky" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/Purple Sky"]
+position = Vector2( 32, 0 )
 scale = Vector2( 2, 2 )
 z_as_relative = false
 texture = ExtResource( 23 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 384, 240 )
+region_rect = Rect2( 0, 0, 1152, 240 )
 
 [node name="ParallaxFar" type="ParallaxBackground" parent="."]
 
@@ -603,6 +612,7 @@ motion_scale = Vector2( 0.1, 1 )
 [node name="md1" type="Sprite" parent="ParallaxFar/ParallaxLayerFar"]
 self_modulate = Color( 1, 1, 1, 0.752941 )
 position = Vector2( 384, 448 )
+scale = Vector2( 0.75, 0.75 )
 z_as_relative = false
 texture = ExtResource( 25 )
 region_enabled = true
@@ -620,7 +630,39 @@ texture = ExtResource( 25 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 1408, 368 )
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer_ChangeWorld" type="Timer" parent="."]
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[node name="Fallzone" type="Area2D" parent="."]
+position = Vector2( 3232, 704 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fallzone"]
+position = Vector2( -768, -32 )
+shape = SubResource( 24 )
+
+[node name="WaitbeforSpawn" type="Timer" parent="Fallzone"]
+wait_time = 2.0
+
+[node name="Checkpoint" type="Area2D" parent="."]
+position = Vector2( 1088, 240 )
+scale = Vector2( 2, 2 )
+
+[node name="Off" type="Sprite" parent="Checkpoint"]
+position = Vector2( 0, -1 )
+scale = Vector2( 1, 0.9 )
+texture = ExtResource( 26 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint"]
+position = Vector2( 0, -10 )
+shape = SubResource( 25 )
+
+[node name="On" type="Sprite" parent="Checkpoint"]
+visible = false
+texture = ExtResource( 27 )
+
+[connection signal="checkPoint" from="Player" to="." method="_on_Player_checkPoint"]
+[connection signal="death" from="Player" to="." method="_on_Player_death"]
+[connection signal="timeout" from="Timer_ChangeWorld" to="." method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Fallzone" to="Player" method="_on_Fallzone_body_entered"]
+[connection signal="timeout" from="Fallzone/WaitbeforSpawn" to="." method="_on_WaitbeforSpawn_timeout"]
+[connection signal="body_entered" from="Checkpoint" to="Player" method="_on_Checkpoint_body_entered"]
