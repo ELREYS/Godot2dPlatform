@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://start-assets/2D Platformer Assets/Graphics/Actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://WorldTiles/tileYellow_10.png" type="Texture" id=2]
@@ -25,8 +25,10 @@
 [ext_resource path="res://start-assets/2D Platformer Assets/Graphics/Level Art/Background/back.png" type="Texture" id=23]
 [ext_resource path="res://BG.gd" type="Script" id=24]
 [ext_resource path="res://start-assets/2D Platformer Assets/Graphics/Level Art/Background/middle.png" type="Texture" id=25]
-[ext_resource path="res://start-assets/2D Platformer Assets/Graphics/Level Mechanics/Checkpoint Off.png" type="Texture" id=26]
-[ext_resource path="res://start-assets/2D Platformer Assets/Graphics/Level Mechanics/Checkpoint On.png" type="Texture" id=27]
+[ext_resource path="res://start-assets/2D Platformer Assets/Graphics/Level Mechanics/Checkpoint On.png" type="Texture" id=26]
+[ext_resource path="res://start-assets/2D Platformer Assets/Graphics/Level Mechanics/Checkpoint Off.png" type="Texture" id=27]
+[ext_resource path="res://Checkpoint.gd" type="Script" id=28]
+[ext_resource path="res://Coins.tscn" type="PackedScene" id=29]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -531,6 +533,19 @@ extents = Vector2( 3296, 10 )
 [sub_resource type="RectangleShape2D" id=25]
 extents = Vector2( 16, 24 )
 
+[sub_resource type="SpriteFrames" id=26]
+animations = [ {
+"frames": [ ExtResource( 26 ) ],
+"loop": false,
+"name": "On",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 27 ) ],
+"loop": true,
+"name": "Off",
+"speed": 5.0
+} ]
+
 [node name="Level1" type="Node2D"]
 script = ExtResource( 24 )
 
@@ -596,8 +611,8 @@ scroll_offset = Vector2( 1, 1 )
 [node name="Purple Sky" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/Purple Sky"]
-position = Vector2( 32, 0 )
-scale = Vector2( 2, 2 )
+position = Vector2( -64, 0 )
+scale = Vector2( 2.08333, 2 )
 z_as_relative = false
 texture = ExtResource( 23 )
 centered = false
@@ -642,27 +657,81 @@ shape = SubResource( 24 )
 
 [node name="WaitbeforSpawn" type="Timer" parent="Fallzone"]
 wait_time = 2.0
+one_shot = true
 
 [node name="Checkpoint" type="Area2D" parent="."]
-position = Vector2( 1088, 240 )
+position = Vector2( 1088, 236 )
 scale = Vector2( 2, 2 )
-
-[node name="Off" type="Sprite" parent="Checkpoint"]
-position = Vector2( 0, -1 )
-scale = Vector2( 1, 0.9 )
-texture = ExtResource( 26 )
+script = ExtResource( 28 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint"]
 position = Vector2( 0, -10 )
 shape = SubResource( 25 )
 
-[node name="On" type="Sprite" parent="Checkpoint"]
-visible = false
-texture = ExtResource( 27 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Checkpoint"]
+frames = SubResource( 26 )
+animation = "Off"
+
+[node name="Checkpoint2" type="Area2D" parent="."]
+position = Vector2( 2176, 108 )
+scale = Vector2( 2, 2 )
+script = ExtResource( 28 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint2"]
+position = Vector2( 0, -10 )
+shape = SubResource( 25 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Checkpoint2"]
+frames = SubResource( 26 )
+animation = "Off"
+
+[node name="Coins" parent="." groups=[
+"coins",
+] instance=ExtResource( 29 )]
+position = Vector2( 512, 296 )
+
+[node name="Coins2" parent="." instance=ExtResource( 29 )]
+position = Vector2( 512, 296 )
+
+[node name="Coins4" parent="." instance=ExtResource( 29 )]
+position = Vector2( 579, 296 )
+
+[node name="Coins5" parent="." instance=ExtResource( 29 )]
+position = Vector2( 443, 296 )
+
+[node name="Coins3" parent="." instance=ExtResource( 29 )]
+position = Vector2( 884, 416 )
+
+[node name="Coins6" parent="." instance=ExtResource( 29 )]
+position = Vector2( 884, 416 )
+
+[node name="Coins7" parent="." instance=ExtResource( 29 )]
+position = Vector2( 961, 416 )
+
+[node name="Coins8" parent="." instance=ExtResource( 29 )]
+position = Vector2( 923, 416 )
 
 [connection signal="checkPoint" from="Player" to="." method="_on_Player_checkPoint"]
 [connection signal="death" from="Player" to="." method="_on_Player_death"]
 [connection signal="timeout" from="Timer_ChangeWorld" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Fallzone" to="Player" method="_on_Fallzone_body_entered"]
 [connection signal="timeout" from="Fallzone/WaitbeforSpawn" to="." method="_on_WaitbeforSpawn_timeout"]
-[connection signal="body_entered" from="Checkpoint" to="Player" method="_on_Checkpoint_body_entered"]
+[connection signal="body_entered" from="Checkpoint" to="Checkpoint" method="_on_Checkpoint_body_entered"]
+[connection signal="checkpoint" from="Checkpoint" to="." method="_on_Checkpoint_checkpoint"]
+[connection signal="checkpoint" from="Checkpoint" to="Player" method="_on_Checkpoint_checkpoint"]
+[connection signal="body_entered" from="Checkpoint2" to="Checkpoint2" method="_on_Checkpoint_body_entered"]
+[connection signal="checkpoint" from="Checkpoint2" to="Player" method="_on_Checkpoint_checkpoint"]
+[connection signal="coins_collected" from="Coins" to="." method="_on_Coins_coins_collected"]
+[connection signal="coins_collected" from="Coins2" to="." method="_on_Coins_coins_collected"]
+[connection signal="coins_collected" from="Coins4" to="." method="_on_Coins_coins_collected"]
+[connection signal="coins_collected" from="Coins5" to="." method="_on_Coins_coins_collected"]
+[connection signal="coins_collected" from="Coins3" to="." method="_on_Coins_coins_collected"]
+[connection signal="coins_collected" from="Coins6" to="." method="_on_Coins_coins_collected"]
+[connection signal="coins_collected" from="Coins7" to="." method="_on_Coins_coins_collected"]
+[connection signal="coins_collected" from="Coins8" to="." method="_on_Coins_coins_collected"]

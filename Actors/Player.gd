@@ -8,7 +8,7 @@ var can_double_jump = true
 var velocity = Vector2(0,0)
 
 signal death
-signal checkPoint(position)
+signal checkPoint(position,name)
 
 func request_ready():
 	pass
@@ -74,6 +74,10 @@ func _on_Fallzone_body_entered(body: Node) -> void:
 
 
 
-func _on_Checkpoint_body_entered(body: Node) -> void:
-	if body.name == "Player":
-		emit_signal("checkPoint",position)
+
+
+func _on_Checkpoint_checkpoint(pos,name) -> void:
+	emit_signal("checkPoint",pos,name)
+
+
+

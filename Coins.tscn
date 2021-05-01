@@ -1,0 +1,73 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://start-assets/2D Platformer Assets/Graphics/Collectibles/gem.png" type="Texture" id=1]
+[ext_resource path="res://Coins.gd" type="Script" id=2]
+[ext_resource path="res://start-assets/2D Platformer Assets/Graphics/Collectibles/Collect_Effect.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 3 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 15, 13 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 15, 0, 15, 13 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 30, 0, 15, 13 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 1 )
+region = Rect2( 45, 0, 15, 13 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 1 )
+region = Rect2( 60, 0, 15, 13 )
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": false,
+"name": "collect",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "gems",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=11]
+
+[node name="Coins" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Sprite" type="AnimatedSprite" parent="Area2D"]
+scale = Vector2( 2, 2 )
+frames = SubResource( 10 )
+animation = "collect"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 11 )
+
+[connection signal="coins_collected" from="." to="." method="_on_Coins_coins_collected"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered" flags=6]
+[connection signal="animation_finished" from="Area2D/Sprite" to="." method="_on_Sprite_animation_finished"]

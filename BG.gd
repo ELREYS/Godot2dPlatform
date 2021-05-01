@@ -4,10 +4,11 @@ var r = 255
 var g = 255
 var b = 255
 onready var player_current_position = $"Player".position
-var pos
 export var timer = 0
 
 onready var colour = $"ParallaxBackground/Purple Sky/Sprite"
+
+onready var gemsCount = PlayerVariables.gems
 
 # Declare member variables here. Examples:
 # var a: int = 2
@@ -17,13 +18,18 @@ onready var colour = $"ParallaxBackground/Purple Sky/Sprite"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("Start Scene")
+	if PlayerVariables.player_position != null:
+		print(PlayerVariables.player_position)
+		$"Player".position = PlayerVariables.player_position
+		print("Gems:",gemsCount)
+	
+	
 	
 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(pos)
 	var camLimitUP = $Player/Camera2D2.position.y - $"ParallaxBackground/Purple Sky".position.y
 	$"ParallaxBackground/Purple Sky".position = Vector2($Player/Camera2D2.position.x,$Player/Camera2D2.position.y * camLimitUP)
 	#$"ParallaxMiddle1/ParallaxLayerMiddle1".position = Vector2($Player/Camera2D2.position.x,$"ParallaxMiddle1/ParallaxLayerMiddle1".position.y)
@@ -40,14 +46,13 @@ func _on_Timer_timeout() -> void:
 	
 
 
-func checkPointOnOff():
-	$"Checkpoint/Off".visible = false
-	$"Checkpoint/On".visible = true
-
+func checkPointOnOff(cp_name):
+	pass
+	
 
 
 func _on_WaitbeforSpawn_timeout() -> void:
-	get_tree().change_scene("res://Level1.tscn")
+	$"Player".position = PlayerVariables.player_position
 
 
 func _on_Player_death() -> void:
@@ -55,6 +60,14 @@ func _on_Player_death() -> void:
 	$"Fallzone/WaitbeforSpawn".start()
 
 
-func _on_Player_checkPoint(position) -> void:
-	print(position)
-	pos = position
+func _on_Player_checkPoint(pos,cp_name) -> void:
+	print(pos)
+	PlayerVariables.player_position = pos
+	
+
+func _on_Coins_coins_collected(gems,name) -> void:
+	pass
+			
+		
+
+
