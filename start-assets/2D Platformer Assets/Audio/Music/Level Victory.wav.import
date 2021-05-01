@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Level Victory.wav-25d27b07e53d1e2e3aa1780238c7435c.sample"
+
+[deps]
+
+source_file="res://start-assets/2D Platformer Assets/Audio/Music/Level Victory.wav"
+dest_files=[ "res://.import/Level Victory.wav-25d27b07e53d1e2e3aa1780238c7435c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

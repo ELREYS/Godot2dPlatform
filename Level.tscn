@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Actors/Main.tscn" type="PackedScene" id=1]
+[ext_resource path="res://start-assets/2D Platformer Assets/Graphics/Level Art/Background/back.png" type="Texture" id=2]
+[ext_resource path="res://start-assets/2D Platformer Assets/Graphics/Level Art/Background/middle.png" type="Texture" id=3]
+[ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=4]
+
+[node name="Level" type="Node2D"]
+
+[node name="bg" type="Sprite" parent="."]
+position = Vector2( 109.25, 198.784 )
+scale = Vector2( 1.07682, 2.0982 )
+texture = ExtResource( 2 )
+
+[node name="middle" type="Sprite" parent="bg"]
+position = Vector2( -133.781, 107.865 )
+scale = Vector2( 1.60469, 0.449438 )
+texture = ExtResource( 3 )
+
+[node name="middle2" type="Sprite" parent="bg"]
+position = Vector2( 114.787, 126.292 )
+scale = Vector2( 1.60469, 0.449438 )
+texture = ExtResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="TileMap" parent="." instance=ExtResource( 1 )]

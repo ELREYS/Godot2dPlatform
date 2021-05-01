@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Game Complete.ogg-08181905242a17f30e838a83b9a0ed4c.oggstr"
+
+[deps]
+
+source_file="res://start-assets/2D Platformer Assets/Audio/Music/Game Complete.ogg"
+dest_files=[ "res://.import/Game Complete.ogg-08181905242a17f30e838a83b9a0ed4c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

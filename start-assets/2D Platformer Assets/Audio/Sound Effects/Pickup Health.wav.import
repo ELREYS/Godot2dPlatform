@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Pickup Health.wav-2672d3795aebf45578316a2f154a5abc.sample"
+
+[deps]
+
+source_file="res://start-assets/2D Platformer Assets/Audio/Sound Effects/Pickup Health.wav"
+dest_files=[ "res://.import/Pickup Health.wav-2672d3795aebf45578316a2f154a5abc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

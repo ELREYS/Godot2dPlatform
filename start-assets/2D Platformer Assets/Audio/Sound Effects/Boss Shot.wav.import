@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Boss Shot.wav-1902e33f2134dc27af97596098257740.sample"
+
+[deps]
+
+source_file="res://start-assets/2D Platformer Assets/Audio/Sound Effects/Boss Shot.wav"
+dest_files=[ "res://.import/Boss Shot.wav-1902e33f2134dc27af97596098257740.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

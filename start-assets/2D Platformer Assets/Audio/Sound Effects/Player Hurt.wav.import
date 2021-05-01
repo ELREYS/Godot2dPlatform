@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Player Hurt.wav-3f774b041bef9ca4fe3d975cc5117e39.sample"
+
+[deps]
+
+source_file="res://start-assets/2D Platformer Assets/Audio/Sound Effects/Player Hurt.wav"
+dest_files=[ "res://.import/Player Hurt.wav-3f774b041bef9ca4fe3d975cc5117e39.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
