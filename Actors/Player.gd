@@ -7,6 +7,9 @@ var can_double_jump = true
 
 var velocity = Vector2(0,0)
 
+onready var player_vars = get_node("/root/PlayerVariables")
+
+signal updateHealth
 signal death
 signal checkPoint(position,name)
 
@@ -71,6 +74,9 @@ func _physics_process(delta):
 func _on_Fallzone_body_entered(body: Node) -> void:
 	print("Emit Signal Death")
 	emit_signal("death")
+	player_vars.life -= 1
+	emit_signal("updateHealth",player_vars.life)
+
 
 
 
@@ -78,6 +84,5 @@ func _on_Fallzone_body_entered(body: Node) -> void:
 
 func _on_Checkpoint_checkpoint(pos,name) -> void:
 	emit_signal("checkPoint",pos,name)
-
 
 

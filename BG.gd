@@ -6,6 +6,9 @@ var b = 255
 onready var player_current_position = $"Player".position
 export var timer = 0
 
+
+onready	var coins = preload("res://Coins.tscn")
+
 onready var colour = $"ParallaxBackground/Purple Sky/Sprite"
 
 onready var gemsCount = PlayerVariables.gems
@@ -24,8 +27,12 @@ func _ready() -> void:
 		print("Gems:",gemsCount)
 	
 	
+	#var coin = coins.instance()
+	#print(coin)
 	
-
+	#add_child(coin)
+	# position the coin at the coin_spawn_node
+	#coin.global_position = Vector2(443,296)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -52,12 +59,18 @@ func checkPointOnOff(cp_name):
 
 
 func _on_WaitbeforSpawn_timeout() -> void:
-	$"Player".position = PlayerVariables.player_position
+	if PlayerVariables.player_position != null:
+		$"Player".position = PlayerVariables.player_position
+	
+	$Player.position = player_current_position
 
 
 func _on_Player_death() -> void:
 	print("Signal received Death")
 	$"Fallzone/WaitbeforSpawn".start()
+	
+	
+	
 
 
 func _on_Player_checkPoint(pos,cp_name) -> void:
@@ -65,9 +78,5 @@ func _on_Player_checkPoint(pos,cp_name) -> void:
 	PlayerVariables.player_position = pos
 	
 
-func _on_Coins_coins_collected(gems,name) -> void:
-	pass
-			
-		
-
-
+func _on_Coins_coins_collected(g, n) -> void:
+	pass # Replace with function body.
