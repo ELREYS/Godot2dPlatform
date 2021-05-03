@@ -72,10 +72,11 @@ func _physics_process(delta):
 
 
 func _on_Fallzone_body_entered(body: Node) -> void:
-	print("Emit Signal Death")
-	emit_signal("death")
-	player_vars.life -= 1
-	emit_signal("updateHealth",player_vars.life)
+	if body.name == "Player":
+		print("Emit Signal Death")
+		emit_signal("death")
+		player_vars.life -= 1
+		emit_signal("updateHealth",player_vars.life)
 
 
 

@@ -79,4 +79,4 @@ func _on_Player_checkPoint(pos,cp_name) -> void:
 	
 
 func _on_Coins_coins_collected(g, n) -> void:
-	pass # Replace with function body.
+	print("Colleetd")

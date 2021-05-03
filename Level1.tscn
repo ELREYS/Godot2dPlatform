@@ -553,7 +553,7 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 31 )
-region = Rect2( 28, 0, 14, 12 )
+region = Rect2( 14, 0, 14, 12 )
 
 [sub_resource type="AtlasTexture" id=28]
 atlas = ExtResource( 31 )
@@ -561,13 +561,13 @@ region = Rect2( 0, 0, 14, 12 )
 
 [sub_resource type="AtlasTexture" id=29]
 atlas = ExtResource( 31 )
-region = Rect2( 14, 0, 14, 12 )
+region = Rect2( 28, 0, 14, 12 )
 
 [sub_resource type="SpriteFrames" id=30]
 animations = [ {
 "frames": [ SubResource( 27 ) ],
 "loop": true,
-"name": "empty",
+"name": "half",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 28 ) ],
@@ -577,7 +577,7 @@ animations = [ {
 }, {
 "frames": [ SubResource( 29 ) ],
 "loop": true,
-"name": "half",
+"name": "empty",
 "speed": 5.0
 } ]
 
@@ -863,9 +863,6 @@ position = Vector2( 1049, 425 )
 ] instance=ExtResource( 29 )]
 position = Vector2( 1012, 425 )
 
-[node name="Enemy" parent="." instance=ExtResource( 30 )]
-position = Vector2( 341, 425 )
-
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource( 32 )
 
@@ -909,6 +906,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Enemy" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Enemy" instance=ExtResource( 30 )]
+position = Vector2( 104.33, 363.422 )
+direction = 1
+
+[node name="Enemy2" parent="Enemy" instance=ExtResource( 30 )]
+position = Vector2( 609.733, 298.745 )
+
 [connection signal="checkPoint" from="Player" to="." method="_on_Player_checkPoint"]
 [connection signal="death" from="Player" to="." method="_on_Player_death"]
 [connection signal="updateHealth" from="Player" to="HUD" method="_on_Player_updateHealth"]
@@ -920,7 +926,6 @@ __meta__ = {
 [connection signal="checkpoint" from="Checkpoint" to="Player" method="_on_Checkpoint_checkpoint"]
 [connection signal="body_entered" from="Checkpoint2" to="Checkpoint2" method="_on_Checkpoint_body_entered"]
 [connection signal="checkpoint" from="Checkpoint2" to="Player" method="_on_Checkpoint_checkpoint"]
-[connection signal="coins_collected" from="Coins" to="." method="_on_Coins_coins_collected"]
 [connection signal="updateGems" from="Coins" to="HUD" method="_on_Coins_updateGems"]
 [connection signal="coins_collected" from="Coins2" to="." method="_on_Coins_coins_collected"]
 [connection signal="updateGems" from="Coins2" to="HUD" method="_on_Coins_updateGems"]
